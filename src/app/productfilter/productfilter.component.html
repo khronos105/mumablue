@@ -1,0 +1,25 @@
+<h1>Filter</h1>
+<form  (submit)="submit(form.value)">
+  <div class="sidebar-categories">
+    <div class="head">Browse Categories</div>
+    <ul class="main-categories">
+      <li class="common-filter">
+        <form action="#">
+          <ul>
+            <li class="filter-list" [formGroup]="form">
+              <input class="custom-checkbox" type="checkbox" id="book" name="book"
+              [formControlName]="'book'">
+              <label for="book">Book</label>
+            </li>
+            <li class="filter-list" [formGroup]="form">
+              <input class="custom-checkbox" type="checkbox" id="doll" name="doll"
+                     [formControlName]="'doll'">
+              <label for="doll">Doll</label>
+            </li>
+          </ul>
+        </form>
+      </li>
+    </ul>
+    <button type="submit" class="btn btn-outline-primary">Apply</button>
+  </div>
+</form>

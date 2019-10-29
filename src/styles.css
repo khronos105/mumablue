@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+.sidebar-categories .head {
+  font-family: 'Oswald', sans-serif;
+  line-height: 50px;
+  background: #384aeb;
+  padding: 0 15px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+.sidebar-categories .main-categories {
+  padding: 20px 28px;
+  background: #f1f6f7;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+.filter-list {
+  line-height: 32px;
+}
+.sidebar-categories .main-categories .custom-checkbox {
+  background: transparent !important;
+}
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.custom-checkbox {
+  top: 2px;
+}
+.custom-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  -webkit-transition: all 0.15s ease-out 0s;
+  -moz-transition: all 0.15s ease-out 0s;
+  transition: all 0.15s ease-out 0s;
+  background: #fff;
+  border: 1px solid #999999;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+.custom-checkbox:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #384aeb;
+  content: '';
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+}
+.custom-checkbox:checked {
+  border: 8px solid #384aeb;
+}
+.filter-list label {
+  margin-bottom: 3px;
+  cursor: pointer;
+  color: #777;
+}

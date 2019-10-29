@@ -1,0 +1,39 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <app-productfilter (applied)="productFilterApplied($event)"></app-productfilter>
+    </div>
+    <div class="col-9">
+      <h1>Products</h1>
+        <div *ngIf="products.length > 0; else loading" class="d-flex flex-wrap">
+          <div *ngFor="let product of products; let i = index" class="col-xs-12 col-sm-12 col-md-6">
+              <div class="card">
+                <img [src]="variations[i].variationImage.url" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ variations[i].name }}</h5>
+                  <p class="card-text">{{ variations[i].metaDescription }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Type: {{ product.type }}</li>
+                  <li class="list-group-item">Current price: {{ product.getPrice() + product.getCurrency() }}</li>
+                  <li *ngIf="product.priceOld" class="list-group-item">Old price: {{ product.priceOld | currency:'EUR' }}</li>
+                </ul>
+                <div class="card-body">
+                  <p class="card-link">Card link</p>
+                  <p class="card-link">Another link<p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <ng-template #loading>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-grow text-dark" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
