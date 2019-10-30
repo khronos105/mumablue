@@ -4,6 +4,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
 
+## Tasks to do
+
+- `Calidad del código y estructura:` Uso de patrones de diseño, utilización de servicio propio, creación al menos de 1 compemente para el producto y otro para el catálogo, uso correcto de componentes `Done!`
+- `Diseño y UX:` Se valorará el diseño elegido, desarrollar preferiblemente con bootstrap `Done!`
+- `Animaciones:` el uso de animaciones sumará puntos para la prueba, siempre que sean con sentido y ayuden a mejorar la usabilidad `Done!` 
+- `Opcional:` si estás familiarizado con el uso de docker-compose, sería un punto extra para la realización de la prueba `Nope :(`
+- `Entrega:` enviar a it@mumablue.com el enlace de un repositorio git, junto con 1 archivo Readme que describa generalmente la prueba `Done!`
+
 ## How to run Application
 
 First you need to download this project with the command: `git clone URL`.
