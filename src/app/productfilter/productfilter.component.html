@@ -4,6 +4,7 @@
     <ul class="main-categories">
       <li class="common-filter">
         <form action="#">
+          <!--     Product Type Filter     -->
           <p>Type</p>
           <div class="filter-types">
             <ng-container *ngIf="types && types.length > 0; else loadingTypes">
@@ -17,6 +18,7 @@
             </ng-template>
           </div>
           <hr>
+          <!--     Language Filter     -->
           <p>Languages</p>
           <div class="filter-languages">
             <ng-container *ngIf="langs && langs.length > 0; else loadingLangs">
@@ -32,6 +34,7 @@
             </ng-template>
           </div>
           <hr>
+          <!--     Countries Filter     -->
           <p>Countries</p>
           <div class="filter-countries">
             <ng-container *ngIf="countries && countries.length > 0; else loadingCountries">
@@ -49,6 +52,7 @@
             </ng-template>
           </div>
           <hr>
+          <!--     People Filter     -->
           <p>People</p>
           <div class="filter-people">
             <ng-container *ngIf="people && people.length > 0; else loadingPeople">
@@ -62,6 +66,7 @@
             </ng-template>
           </div>
           <hr>
+          <!--     Available Ages Filter     -->
           <p>Available Ages</p>
           <div class="filter-ages">
             <ng-container *ngIf="ages && ages.length > 0; else loadingAges">

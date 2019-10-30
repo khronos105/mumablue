@@ -1,18 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1 @fade class="text-center mb-2 mt-5">Welcome to our bookstore</h1>
-      <h3 @fade class="text-center mb-5">Enjoy our aventures</h3>
+    <div @fade class="col-md-12">
+      <h1  class="text-center mb-2 mt-5">Welcome to our bookstore</h1>
+      <h3  class="text-center mb-5">Enjoy our aventures</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 col-lg-3">
+      <!--   Filter   -->
       <app-productfilter (applied)="productFilterApplied($event)"
                          [people]="people" [langs]="langs"
                          [countries]="countries" [ages]="ages"
                          [filters]="filters" [types]="types"></app-productfilter>
     </div>
     <div class="col-md-6 col-lg-9">
+      <!--   Each Product   -->
       <div *ngIf="variations.length > 0; else loading" class="d-flex flex-wrap">
         <div @fade *ngFor="let variation of variations;" class="col-xs-12 col-lg-6">
           <div class="ft-recipe">
@@ -41,6 +43,8 @@
         </div>
       </div>
     </div>
+    <!--     In case that if the Variations are still not accessible or not loaded     -->
+    <!--     It shows a spinner     -->
     <ng-template #loading>
       <div class="d-flex justify-content-center">
         <div class="spinner-grow text-dark" role="status">

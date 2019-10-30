@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../entities/product.entity';
-import {fade, singleSidebar, slideFilter, slideProducts} from '../animations/animations';
+import {fade} from '../animations/animations';
 
 @Component({
   selector: 'app-single-variation',

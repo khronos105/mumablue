@@ -1,6 +1,7 @@
 <div @fade class="container">
   <ng-container *ngIf="variation; else loading">
     <div class="row">
+      <!--   Image, Title and Text of the Variation   -->
       <div class="col-md-6 col-lg-8 mt-5">
         <img [src]="variation.img" alt="{{variation.name + ' image'}}">
         <div class="title-holder">
@@ -9,10 +10,11 @@
         </div>
         <p>{{variation.synopsis}}</p>
       </div>
+      <!--   Sidebar with details of the Variation (Available Ages, People, Rating, Countries and Price)   -->
       <div class="col-md-6 col-lg-4 mt-5">
         <div class="sidebar-categories">
+          <!--     Variation Details     -->
           <div class="head">Variation Details</div>
-
           <ul class="main-categories">
             <li>
               <div class="single-ages">
@@ -25,6 +27,7 @@
             </li>
             <li>
               <hr>
+              <!--     People     -->
               <div class="single-ages">
                 <p>People</p>
                 <div class="list-ages">
@@ -38,6 +41,7 @@
             </li>
             <li>
               <hr>
+              <!--     Rating     -->
               <div class="single-ages">
                 <p>Rating</p>
                 <div class="list-ages">
@@ -51,6 +55,7 @@
             </li>
             <li>
               <hr>
+              <!--     Countries     -->
               <div class="single-countries">
                 <p>Countries</p>
                 <div class="list-countries">
@@ -61,6 +66,7 @@
             </li>
             <li>
               <hr>
+              <!--     Price     -->
               <div class="single-price">
                 <p *ngIf="variation.oldPrice" class="old-price">{{ variation.oldPrice }}</p>
                 <p class="underline">Price {{ variation.price }}</p>
@@ -71,6 +77,8 @@
       </div>
     </div>
   </ng-container>
+  <!--     In case that if the Variation is still not accessible or not loaded     -->
+  <!--     It shows a spinner     -->
   <ng-template #loading>
     <div class="row">
       <div class="col-md-12">

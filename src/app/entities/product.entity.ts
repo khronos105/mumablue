@@ -1,7 +1,12 @@
 import {Variation} from './variation.entity';
-import {filter} from 'rxjs/operators';
 
-
+/**
+ * @class Product
+ * It holds all the Product logic
+ * It is initialized with a {}
+ * It initializes and Manages the Variations objects
+ * Also the filter logic is here becouse it stores all the Variations objects
+ */
 export class Product {
   public id;
   public type;
@@ -25,17 +30,26 @@ export class Product {
     this.initVariations();
   }
 
+  /**
+   * @method initVariations
+   * Builds and stores the variations
+   */
   initVariations() {
+    /** Foreach variation it manipulates the stored data */
     const variations = this.variations.map(v => {
+      /** This var stores the Variation description depending if
+       * the Product description is set or is not empty space */
       const metaDescription = this.replaceDescription(v);
+      /** Setting the price of the Variation */
       const price = this.splitPrices(this.priceCurrency);
+      /** Setting the oldPrice if the Product contains it */
       const oldPrice = this.priceOld ? this.splitPrices(this.priceOld) : null;
-      // Setting default variation image in case that the variation doesn't contain image
+      /** Setting default variation image in case that the variation doesn't contain image */
       let img = '/assets/coming-soon.png';
       if (v.variationImage != null && v.variationImage.url != null) {
         img = v.variationImage.url;
       }
-
+      /** This var contains the data to initialize the Variation objects */
       const variation = {
         id: v.id,
         productID: this.id,
@@ -62,6 +76,14 @@ export class Product {
     return prop.split(' ')[0] + this.priceCurrency.split(' ')[1];
   }
 
+  /**
+   * @method replaceDescription
+   * @param desc
+   * Returns the description for the variation
+   * The parameter desc is the Product description element
+   * If it is empty or not set it returns a string of 120 characters
+   * of the synopsis
+   */
   replaceDescription(desc) {
     if (typeof desc === 'string' && desc.length > 1) {
       return desc;
@@ -69,6 +91,12 @@ export class Product {
     return desc.synopsis.substr(0, 120) + '...';
   }
 
+  /**
+   * @getVariation
+   * @param filters
+   * This method stores the logic of filtering variations
+   * The parameter filters is an object {types, lang, country, people, ages}
+   */
   getVariation(filters) {
     // Filter by Product Type
     const variations = this.variations.filter(variation => {
@@ -89,7 +117,9 @@ export class Product {
         } else {
           return variation;
         }
-      }).filter(variation => {
+      })
+      // Filter Available Ages
+      .filter(variation => {
         if (filters.ages) {
           return variation.ages.includes(filters.ages);
         } else {
@@ -100,6 +130,10 @@ export class Product {
     return variations[0];
   }
 
+  /**
+   * @method getLangs
+   * returns an array of strings ['en', 'es'...]
+   */
   getLangs() {
     let langs = [];
     for (const v of this.variations) {
@@ -114,12 +148,19 @@ export class Product {
     return langs;
   }
 
+  /**
+   * @method removeDuplicates
+   * @param array
+   * @param key
+   * This method is used as helper to remove duplicates of an array
+   */
   private removeDuplicates(array, key) {
     const lookup = new Set();
     return array.filter(obj => !lookup.has(obj[key]) && lookup.add(obj[key]));
   }
 
   /**
+   * @method configCountries
    * Preparing and returning Product Countries
    */
   configCountries() {
