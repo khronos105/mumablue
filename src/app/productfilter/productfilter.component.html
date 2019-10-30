@@ -1,14 +1,14 @@
-<h1>Filter</h1>
-<form  (submit)="submit(form.value)">
+<form (submit)="submit(form.value)">
   <div class="sidebar-categories">
-    <div class="head">Browse Categories</div>
+    <div class="head">Browse Products</div>
     <ul class="main-categories">
       <li class="common-filter">
         <form action="#">
+          <p>Type</p>
           <ul>
             <li class="filter-list" [formGroup]="form">
               <input class="custom-checkbox" type="checkbox" id="book" name="book"
-              [formControlName]="'book'">
+                     [formControlName]="'book'">
               <label for="book">Book</label>
             </li>
             <li class="filter-list" [formGroup]="form">
@@ -17,9 +17,70 @@
               <label for="doll">Doll</label>
             </li>
           </ul>
+          <hr>
+          <p>Languages</p>
+          <div class="filter-languages">
+            <ng-container *ngIf="langs && langs.length > 0; else loadingLangs">
+              <div class="language-holder" *ngFor="let lang of langs">
+                <img [class.active]="lang.code == filters.lang" src="{{ '/assets/lang_imgs/'+ lang.code +'.png' }}"
+                     [alt]="lang.title" [title]="lang.title" (click)="filters.lang = lang.code">
+              </div>
+            </ng-container>
+            <ng-template #loadingLangs>
+              <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </ng-template>
+          </div>
+          <hr>
+          <p>Countries</p>
+          <div class="filter-countries">
+            <ng-container *ngIf="countries && countries.length > 0; else loadingCountries">
+              <select name="countries" (change)="onChangeCountry($event.target.value)">
+                <option value="">Select Country</option>
+                <ng-container *ngFor="let country of countries">
+                  <option [value]="country" [selected]="country == filters.country">{{ country }}</option>
+                </ng-container>
+              </select>
+            </ng-container>
+            <ng-template #loadingCountries>
+              <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </ng-template>
+          </div>
+          <hr>
+          <p>People</p>
+          <div class="filter-people">
+            <ng-container *ngIf="people && people.length > 0; else loadingPeople">
+              <button class="btn btn-outline-primary" [class.active]="filters.people == (i + 1)"
+                      *ngFor="let item of people;let i = index" (click)="filters.people = i+1">{{ i + 1 }}</button>
+            </ng-container>
+            <ng-template #loadingPeople>
+              <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </ng-template>
+          </div>
+          <hr>
+          <p>Available Ages</p>
+          <div class="filter-ages">
+            <ng-container *ngIf="ages && ages.length > 0; else loadingAges">
+              <button class="btn btn-outline-primary" [class.active]="filters.ages == age" *ngFor="let age of ages"
+                      (click)="filters.ages = age">{{ age }}</button>
+            </ng-container>
+            <ng-template #loadingAges>
+              <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </ng-template>
+          </div>
         </form>
       </li>
     </ul>
-    <button type="submit" class="btn btn-outline-primary">Apply</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-outline-primary">Apply Filters</button>
+      <button class="btn btn-outline-secondary" (click)="resetFilters()">Reset Filters</button>
+    </div>
   </div>
 </form>

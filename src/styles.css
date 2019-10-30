@@ -2,33 +2,40 @@
 .sidebar-categories .head {
   font-family: 'Oswald', sans-serif;
   line-height: 50px;
-  background: #384aeb;
+  background: #8dc8e8;
   padding: 0 15px;
   font-size: 18px;
   font-weight: 400;
   color: #fff;
 }
+
 .sidebar-categories .main-categories {
   padding: 20px 28px;
   background: #f1f6f7;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 .filter-list {
   line-height: 32px;
 }
+
 .sidebar-categories .main-categories .custom-checkbox {
   background: transparent !important;
 }
+
 input[type=checkbox], input[type=radio] {
   box-sizing: border-box;
   padding: 0;
 }
+
 .custom-checkbox {
   top: 2px;
 }
+
 .custom-checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -54,11 +61,12 @@ input[type=checkbox], input[type=radio] {
   position: relative;
   z-index: 1;
 }
+
 .custom-checkbox:checked::after {
   -webkit-animation: click-wave 0.65s;
   -moz-animation: click-wave 0.65s;
   animation: click-wave 0.65s;
-  background: #384aeb;
+  background: #8dc8e8;
   content: '';
   display: block;
   width: 15px;
@@ -68,11 +76,62 @@ input[type=checkbox], input[type=radio] {
   z-index: 2;
   opacity: 0;
 }
+
 .custom-checkbox:checked {
-  border: 8px solid #384aeb;
+  border: 8px solid #8dc8e8;
 }
+
 .filter-list label {
   margin-bottom: 3px;
   cursor: pointer;
   color: #777;
+}
+
+.old-price > span {
+  text-decoration: line-through;
+}
+
+.language-holder {
+  display: inline-block;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.language-holder img {
+  max-width: 32px;
+}
+
+.filter-people button {
+  width: 30%;
+}
+
+.filter-people button:nth-child(2n) {
+  margin: 0 7px;
+}
+
+.filter-ages button {
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+.filter-countries select {
+  width: 100%;
+}
+
+.sidebar-categories button[type=submit] {
+  margin-bottom: 5px;
+}
+
+.product {
+  border: 5px solid rgba(252, 247, 205, .4) !important;
+  transition: .25s all;
+}
+
+.product:hover {
+  border-color: #fcf7cd;
+  box-shadow: 0 0 70px -5px rgba(0, 0, 0, .2) !important;
+}
+
+.product .card-body {
+  background: #fcf7cd;
 }

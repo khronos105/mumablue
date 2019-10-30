@@ -1,39 +1,51 @@
-
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center mb-2 mt-5">Welcome to our bookstore</h1>
+      <h3 class="text-center mb-5">Enjoy our aventures</h3>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-3">
-      <app-productfilter (applied)="productFilterApplied($event)"></app-productfilter>
+      <app-productfilter (applied)="productFilterApplied($event)" [people]="people" [langs]="langs"
+                         [countries]="countries" [ages]="ages"
+                         [filters]="filters"></app-productfilter>
     </div>
     <div class="col-9">
-      <h1>Products</h1>
-        <div *ngIf="products.length > 0; else loading" class="d-flex flex-wrap">
-          <div *ngFor="let product of products; let i = index" class="col-xs-12 col-sm-12 col-md-6">
-              <div class="card">
-                <img [src]="variations[i].variationImage.url" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{ variations[i].name }}</h5>
-                  <p class="card-text">{{ variations[i].metaDescription }}</p>
+      <div *ngIf="variations.length > 0; else loading" class="d-flex flex-wrap">
+        <div *ngFor="let variation of variations;" class="col-xs-12 col-sm-12 col-md-6">
+          <div class="ft-recipe">
+            <div class="ft-recipe__thumb">
+              <img [src]="variation.img" /></div>
+            <div class="ft-recipe__content">
+              <header class="content__header">
+                <div class="row-wrapper">
+                  <h2 class="recipe-title">{{ variation.name | titlecase }}</h2>
+                  <div class="user-rating"></div>
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Type: {{ product.type }}</li>
-                  <li class="list-group-item">Current price: {{ product.getPrice() + product.getCurrency() }}</li>
-                  <li *ngIf="product.priceOld" class="list-group-item">Old price: {{ product.priceOld | currency:'EUR' }}</li>
+                <ul class="recipe-details">
+                  <li class="recipe-details-item"><i class="fa fa-star" aria-hidden="true"></i><span class="value">{{ variation.rating }}</span><span class="title">Rating</span></li>
+                  <li class="recipe-details-item"><i class="fa fa-user" aria-hidden="true"></i><span class="value">{{ variation.people }}</span><span class="title">People</span></li>
+                  <li class="recipe-details-item"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="value"> {{ variation.price }}</span><span class="title">Price</span></li>
                 </ul>
-                <div class="card-body">
-                  <p class="card-link">Card link</p>
-                  <p class="card-link">Another link<p>
-                </div>
-              </div>
+              </header>
+              <p class="description">{{ variation.desc }}</p>
+              <footer class="content__footer"><a href="#">View Recipe</a></footer>
             </div>
           </div>
-      </div>
-      <ng-template #loading>
-        <div class="d-flex justify-content-center">
-          <div class="spinner-grow text-dark" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
         </div>
-      </ng-template>
+      </div>
     </div>
-
+    <ng-template #loading>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-grow text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
   </div>
+
+</div>
+
+
+
