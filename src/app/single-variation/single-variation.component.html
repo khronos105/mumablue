@@ -1,0 +1,88 @@
+<div @fade class="container">
+  <ng-container *ngIf="variation; else loading">
+    <div class="row">
+      <div class="col-md-6 col-lg-8 mt-5">
+        <img [src]="variation.img" alt="{{variation.name + ' image'}}">
+        <div class="title-holder">
+          <button class="btn" routerLink="/"><i class="fa fa-arrow-left"></i></button>
+          <h2 class="mt-3 mb-3">{{ variation.name }}</h2>
+        </div>
+        <p>{{variation.synopsis}}</p>
+      </div>
+      <div class="col-md-6 col-lg-4 mt-5">
+        <div class="sidebar-categories">
+          <div class="head">Variation Details</div>
+
+          <ul class="main-categories">
+            <li>
+              <div class="single-ages">
+                <p>Availeble Ages</p>
+                <div class="list-ages">
+                  <h5 *ngFor="let age of variation.ages"><span class="badge badge-pill badge-primary">{{ age }}</span>
+                  </h5>
+                </div>
+              </div>
+            </li>
+            <li>
+              <hr>
+              <div class="single-ages">
+                <p>People</p>
+                <div class="list-ages">
+                  <h5 *ngFor="let person of variation.countMember(variation.people)">
+                    <span class="badge badge-pill badge-primary">
+                      <i _ngcontent-xbr-c1="" class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                  </h5>
+                </div>
+              </div>
+            </li>
+            <li>
+              <hr>
+              <div class="single-ages">
+                <p>Rating</p>
+                <div class="list-ages">
+                  <h5 *ngFor="let star of variation.countMember(variation.rating)">
+                    <span class="badge badge-pill badge-primary">
+                      <i _ngcontent-xbr-c1="" class="fa fa-star" aria-hidden="true"></i>
+                    </span>
+                  </h5>
+                </div>
+              </div>
+            </li>
+            <li>
+              <hr>
+              <div class="single-countries">
+                <p>Countries</p>
+                <div class="list-countries">
+                  <h6 *ngFor="let country of variation.countries"><span
+                    class="badge badge-pill badge-primary">{{ country }}</span></h6>
+                </div>
+              </div>
+            </li>
+            <li>
+              <hr>
+              <div class="single-price">
+                <p *ngIf="variation.oldPrice" class="old-price">{{ variation.oldPrice }}</p>
+                <p class="underline">Price {{ variation.price }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #loading>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-grow text-dark" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+

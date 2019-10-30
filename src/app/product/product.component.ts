@@ -1,14 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
-import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
-import {Variation} from '../entities/variation.entity';
 import {Product} from '../entities/product.entity';
+import {slideProducts, fade} from '../animations/animations';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
+  animations: [
+    slideProducts,
+    fade
+  ]
 })
 export class ProductComponent implements OnInit {
 
@@ -28,9 +31,7 @@ export class ProductComponent implements OnInit {
   };
 
   constructor(
-    private dataService: DataService,
-    private router: Router,
-    private route: ActivatedRoute
+    private dataService: DataService
   ) {
   }
 
@@ -43,7 +44,17 @@ export class ProductComponent implements OnInit {
       )
       .subscribe(response => {
         for (const item of response) {
-          this.products$.push(new Product(item.id, item.type, item.countries, item.availableAges, item.variations, item.priceOld, item.priceCurrency, item.rating));
+          const props = {
+            id: item.id,
+            type: item.type,
+            countries: item.countries,
+            availableAges: item.availableAges,
+            variations: item.variations,
+            priceOld: item.priceOld,
+            priceCurrency: item.priceCurrency,
+            rating: item.rating
+          };
+          this.products$.push(new Product(props));
         }
         this.setVariations();
         this.getProductsLangs();

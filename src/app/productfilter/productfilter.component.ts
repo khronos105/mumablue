@@ -1,9 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {slideFilter} from '../animations/animations';
 
 @Component({
   selector: 'app-productfilter',
-  templateUrl: './productfilter.component.html'
+  templateUrl: './productfilter.component.html',
+  animations: [
+    slideFilter
+  ]
 })
 export class ProductfilterComponent implements OnInit {
   @Input('langs') langs;

@@ -12,4 +12,8 @@ export class DataService {
   getProducts(productTypeFilters = null) {
     return this.httpClient.get(this.url + '/products');
   }
+
+  getProductById(id) {
+    return this.httpClient.get(this.url + '/products/' + id);
+  }
 }

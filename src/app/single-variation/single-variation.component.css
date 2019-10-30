@@ -1,0 +1,46 @@
+img{
+  width: 100%;
+}
+h2{
+  color: #8dc8e8;
+}
+.list-ages h5,
+.list-countries h6{
+  display: inline-block;
+  margin-right: 5px;
+}
+h5 span.badge,
+h6 span.badge{
+  background: #8dc8e8;
+}
+.main-categories p{
+  color: #ff4f87;
+  margin-bottom: 2px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.underline{
+  text-decoration: underline;
+}
+.main-categories p.old-price {
+  color: grey ;
+  font-size: 16px;
+  text-decoration: line-through;
+}
+.title-holder{
+  position: relative;
+  padding-left: 50px;
+}
+.btn {
+  position: absolute;
+  left: 0;
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 8px 13px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: RoyalBlue;
+}

@@ -1,5 +1,5 @@
 <form (submit)="submit(form.value)">
-  <div class="sidebar-categories">
+  <div @slideFilter class="sidebar-categories">
     <div class="head">Browse Products</div>
     <ul class="main-categories">
       <li class="common-filter">
@@ -21,8 +21,8 @@
           <p>Languages</p>
           <div class="filter-languages">
             <ng-container *ngIf="langs && langs.length > 0; else loadingLangs">
-              <div class="language-holder" *ngFor="let lang of langs">
-                <img [class.active]="lang.code == filters.lang" src="{{ '/assets/lang_imgs/'+ lang.code +'.png' }}"
+              <div [class.active]="lang.code == filters.lang" class="language-holder" *ngFor="let lang of langs">
+                <img src="{{ '/assets/lang_imgs/'+ lang.code +'.png' }}"
                      [alt]="lang.title" [title]="lang.title" (click)="filters.lang = lang.code">
               </div>
             </ng-container>

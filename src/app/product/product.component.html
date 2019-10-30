@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="text-center mb-2 mt-5">Welcome to our bookstore</h1>
-      <h3 class="text-center mb-5">Enjoy our aventures</h3>
+      <h1 @fade class="text-center mb-2 mt-5">Welcome to our bookstore</h1>
+      <h3 @fade class="text-center mb-5">Enjoy our aventures</h3>
     </div>
   </div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-6 col-lg-3">
       <app-productfilter (applied)="productFilterApplied($event)" [people]="people" [langs]="langs"
                          [countries]="countries" [ages]="ages"
                          [filters]="filters"></app-productfilter>
     </div>
-    <div class="col-9">
+    <div class="col-md-6 col-lg-9">
       <div *ngIf="variations.length > 0; else loading" class="d-flex flex-wrap">
-        <div *ngFor="let variation of variations;" class="col-xs-12 col-sm-12 col-md-6">
-          <div class="ft-recipe">
+        <div @fade *ngFor="let variation of variations;" class="col-xs-12 col-lg-6">
+          <div  class="ft-recipe">
             <div class="ft-recipe__thumb">
               <img [src]="variation.img" /></div>
             <div class="ft-recipe__content">
@@ -30,7 +30,7 @@
                 </ul>
               </header>
               <p class="description">{{ variation.desc }}</p>
-              <footer class="content__footer"><a href="#">View Recipe</a></footer>
+              <footer class="content__footer"><a [routerLink]="['/variation', variation.productID, variation.id]">View More</a></footer>
             </div>
           </div>
         </div>
@@ -42,6 +42,7 @@
           <span class="sr-only">Loading...</span>
         </div>
       </div>
+      <h1 class="text-center">There are no products available, please retry later.</h1>
     </ng-template>
   </div>
 

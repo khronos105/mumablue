@@ -3,7 +3,24 @@ import {filter} from 'rxjs/operators';
 
 
 export class Product {
-  constructor(public id, public type, public countries, public availableAges, public variations, public priceOld, private priceCurrency, private rating) {
+  public id;
+  public type;
+  public countries;
+  public availableAges;
+  public variations;
+  public priceOld;
+  private priceCurrency;
+  private rating;
+
+  constructor(props) {
+    this.id = props.id;
+    this.type = props.type;
+    this.countries = props.countries;
+    this.availableAges = props.availableAges;
+    this.variations = props.variations;
+    this.priceOld = props.priceOld;
+    this.priceCurrency = props.priceCurrency;
+    this.rating = props.rating;
     this.configCountries();
     this.initVariations();
   }
@@ -20,6 +37,8 @@ export class Product {
       }
 
       const variation = {
+        id: v.id,
+        productID: this.id,
         name: v.name,
         desc: metaDescription,
         type: this.type,
@@ -28,6 +47,7 @@ export class Product {
         people: v.people,
         ages: this.availableAges,
         rating: this.rating,
+        synopsis: v.synopsis,
         img,
         price,
         oldPrice
