@@ -1,27 +1,57 @@
-# Prueba
+# Prueba Mumablue
+
+**Version 1.0.0**
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
 
-## Development server
+## How to run Application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+First you need to download this project with the command: `git clone URL`.
 
-## Code scaffolding
+After you downloaded the all files, you need to install all the Angular dependencies.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+And this is done by entering in the folder of the project and using the commandline  type`npm install`.
 
-## Build
+It will install all the project. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng serve --open` and the default browser will start with the application.
 
-## Running unit tests
+The structure of the project is:
+```
+   /src/app/animations/animations.ts
+   /src/app/entities/product.entity.ts
+   /src/app/entities/variation.entity.ts
+   /src/app/product/product.component.ts
+   /src/app/product/product.component.html
+   /src/app/product/product.component.css
+   /src/app/productfilter/productfilter.component.ts
+   /src/app/productfilter/productfilter.component.html
+   /src/app/services/data.service.ts
+   /src/app/single-variation/single-variation.component.ts
+   /src/app/single-variation/single-variation.component.spec.ts
+   /src/app/single-variation/single-variation.component.html
+   /src/app/single-variation/single-variation.component.css
+   /src/app/app.component.css
+   /src/app/app.component.html
+   /src/app/app.component.spec.ts
+   /src/app/app.module.ts
+   /src/assets/coming-soon.png
+   /src/assets/lang_items/ca.png
+   /src/assets/lang_items/de.png
+   /src/assets/lang_items/en.png
+   /src/assets/lang_items/es.png
+   /src/assets/lang_items/eu.png
+   /src/assets/lang_items/fr.png
+   /src/assets/lang_items/gl.png
+   /src/assets/lang_items/it.png
+   /src/assets/lang_items/nl.png
+   /src/assets/lang_items/no.png
+   /src/assets/lang_items/pt.png
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contributors
 
-## Running end-to-end tests
+- Roma Bilibov <romabilibov@gmail.com>
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+--- 
+Created By Roma Bilibov
