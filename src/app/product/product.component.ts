@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
 import {map} from 'rxjs/operators';
 import {Product} from '../entities/product.entity';
@@ -14,7 +14,7 @@ import {fade} from '../animations/animations';
     fade
   ]
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
 
   /**
    * @member products$ - stores a collection of Product resources
@@ -53,6 +53,9 @@ export class ProductComponent implements OnInit {
   constructor(
     private dataService: DataService
   ) {
+    if (localStorage.getItem('filters')) {
+      this.filters = JSON.parse(localStorage.getItem('filters'));
+    }
   }
 
   ngOnInit() {
@@ -196,5 +199,15 @@ export class ProductComponent implements OnInit {
     this.filters = $event;
     this.variations = [];
     this.setVariations();
+  }
+
+  /**
+   * @method ngOnDestroy
+   * @param $event
+   * This method stores the filter in local storage
+   * when we go to another page
+   */
+  ngOnDestroy(): void {
+    localStorage.setItem('filters', JSON.stringify(this.filters));
   }
 }

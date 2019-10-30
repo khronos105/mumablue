@@ -78,6 +78,7 @@ export class ProductfilterComponent implements OnInit {
    * refilter all the variations
    */
   resetFilters() {
+    localStorage.removeItem('filters');
     this.filters = {
       types: ['book'],
       lang: 'es',
