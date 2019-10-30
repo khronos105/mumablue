@@ -10,17 +10,34 @@ import {fade, singleSidebar, slideFilter, slideProducts} from '../animations/ani
   styleUrls: ['./single-variation.component.css'],
   animations: [fade]
 })
+/**
+ * Component to show the Variation details
+ * @class
+ */
 export class SingleVariationComponent implements OnInit {
-
+  /** @member Product - stores the Product from the server */
   product$;
+  /** @member Variation - stores the variation that will be shown in the single template*/
   variation;
 
+  /**
+   * @param dataService - service to connect with server
+   * @param router
+   * @param route
+   */
   constructor(
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute) {
   }
 
+  /**
+   * In this state is getting the parameters from URL
+   * and in base of that it filters the Product and
+   * Variation to show.
+   * It builds a Product object and sets a Variation
+   * instance
+   */
   ngOnInit() {
     this.route.paramMap
       .subscribe(params => {
@@ -44,8 +61,6 @@ export class SingleVariationComponent implements OnInit {
                 return item.id === variationID;
               });
             this.variation = variation[0];
-            console.log(this.product$);
-            console.log(this.variation);
           });
       });
   }

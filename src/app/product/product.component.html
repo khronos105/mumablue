@@ -7,16 +7,17 @@
   </div>
   <div class="row">
     <div class="col-md-6 col-lg-3">
-      <app-productfilter (applied)="productFilterApplied($event)" [people]="people" [langs]="langs"
+      <app-productfilter (applied)="productFilterApplied($event)"
+                         [people]="people" [langs]="langs"
                          [countries]="countries" [ages]="ages"
-                         [filters]="filters"></app-productfilter>
+                         [filters]="filters" [types]="types"></app-productfilter>
     </div>
     <div class="col-md-6 col-lg-9">
       <div *ngIf="variations.length > 0; else loading" class="d-flex flex-wrap">
         <div @fade *ngFor="let variation of variations;" class="col-xs-12 col-lg-6">
-          <div  class="ft-recipe">
+          <div class="ft-recipe">
             <div class="ft-recipe__thumb">
-              <img [src]="variation.img" /></div>
+              <img [src]="variation.img"/></div>
             <div class="ft-recipe__content">
               <header class="content__header">
                 <div class="row-wrapper">
@@ -24,13 +25,17 @@
                   <div class="user-rating"></div>
                 </div>
                 <ul class="recipe-details">
-                  <li class="recipe-details-item"><i class="fa fa-star" aria-hidden="true"></i><span class="value">{{ variation.rating }}</span><span class="title">Rating</span></li>
-                  <li class="recipe-details-item"><i class="fa fa-user" aria-hidden="true"></i><span class="value">{{ variation.people }}</span><span class="title">People</span></li>
-                  <li class="recipe-details-item"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="value"> {{ variation.price }}</span><span class="title">Price</span></li>
+                  <li class="recipe-details-item"><i class="fa fa-star" aria-hidden="true"></i><span
+                    class="value">{{ variation.rating }}</span><span class="title">Rating</span></li>
+                  <li class="recipe-details-item"><i class="fa fa-user" aria-hidden="true"></i><span
+                    class="value">{{ variation.people }}</span><span class="title">People</span></li>
+                  <li class="recipe-details-item"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span
+                    class="value"> {{ variation.price }}</span><span class="title">Price</span></li>
                 </ul>
               </header>
               <p class="description">{{ variation.desc }}</p>
-              <footer class="content__footer"><a [routerLink]="['/variation', variation.productID, variation.id]">View More</a></footer>
+              <footer class="content__footer"><a [routerLink]="['/variation', variation.productID, variation.id]">View
+                More</a></footer>
             </div>
           </div>
         </div>
@@ -42,7 +47,7 @@
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-      <h1 class="text-center">There are no products available, please retry later.</h1>
+      <h1 class="text-center">There are no products available, please try later again.</h1>
     </ng-template>
   </div>
 

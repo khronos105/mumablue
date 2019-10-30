@@ -70,11 +70,15 @@ export class Product {
   }
 
   getVariation(filters) {
-    // Filter by Language
+    // Filter by Product Type
     const variations = this.variations.filter(variation => {
-      return variation.language.code === filters.lang;
+      return filters.types.includes(variation.type);
     })
-    // Filter by Country
+    // Filter by Language
+      .filter(variation => {
+        return variation.language.code === filters.lang;
+      })
+      // Filter by Country
       .filter(variation => {
         return variation.countries.includes(filters.country);
       })

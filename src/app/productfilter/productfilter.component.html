@@ -5,18 +5,17 @@
       <li class="common-filter">
         <form action="#">
           <p>Type</p>
-          <ul>
-            <li class="filter-list" [formGroup]="form">
-              <input class="custom-checkbox" type="checkbox" id="book" name="book"
-                     [formControlName]="'book'">
-              <label for="book">Book</label>
-            </li>
-            <li class="filter-list" [formGroup]="form">
-              <input class="custom-checkbox" type="checkbox" id="doll" name="doll"
-                     [formControlName]="'doll'">
-              <label for="doll">Doll</label>
-            </li>
-          </ul>
+          <div class="filter-types">
+            <ng-container *ngIf="types && types.length > 0; else loadingTypes">
+              <button class="btn btn-outline-primary" [class.active]="filters.types.includes(type)"
+                      *ngFor="let type of types" (click)="toggleType(type)">{{ type | titlecase }}</button>
+            </ng-container>
+            <ng-template #loadingTypes>
+              <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </ng-template>
+          </div>
           <hr>
           <p>Languages</p>
           <div class="filter-languages">

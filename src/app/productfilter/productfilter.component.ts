@@ -15,6 +15,7 @@ export class ProductfilterComponent implements OnInit {
   @Input('countries') countries;
   @Input('people') people;
   @Input('ages') ages;
+  @Input('types') types;
   @Output() applied = new EventEmitter();
   form: FormGroup;
 
@@ -22,10 +23,7 @@ export class ProductfilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      book: [],
-      doll: []
-    });
+    this.form = this.formBuilder.group({});
   }
 
   onChangeCountry(val) {
@@ -33,12 +31,21 @@ export class ProductfilterComponent implements OnInit {
   }
 
   submit(formValue) {
-    const productTypes = Object.keys(formValue).filter(item => formValue[item]);
     this.applied.emit(this.filters);
+  }
+
+  toggleType(type) {
+    if (this.filters.types.includes(type)) {
+      const typeIndex = this.filters.types.indexOf(type);
+      this.filters.types.splice(typeIndex, 1);
+    } else {
+      this.filters.types.push(type);
+    }
   }
 
   resetFilters() {
     this.filters = {
+      types: ['book'],
       lang: 'es',
       country: 'ESP',
       people: null,

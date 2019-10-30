@@ -22,9 +22,11 @@ export class ProductComponent implements OnInit {
   countries: string[];
   people: number[];
   ages: string[];
+  types = [];
   // Declaring default filter
   filters = {
     lang: 'es',
+    types: ['book'],
     country: 'ESP',
     people: null,
     ages: null
@@ -61,6 +63,7 @@ export class ProductComponent implements OnInit {
         this.getProductsCountries();
         this.getVariationPeople();
         this.getProductsAges();
+        this.getProductsTypes();
       });
   }
 
@@ -114,6 +117,14 @@ export class ProductComponent implements OnInit {
       }
     }
     this.ages = this.products$[ages.prodIndex].availableAges;
+  }
+
+  getProductsTypes() {
+    for (let i = 0; i < this.products$.length; i++) {
+      if (!this.types.includes(this.products$[i].type)) {
+        this.types.push(this.products$[i].type);
+      }
+    }
   }
 
   productFilterApplied($event) {

@@ -98,9 +98,11 @@ input[type=checkbox], input[type=radio] {
   border-radius: 2px;
   padding: 0 5px;
 }
+
 .language-holder.active {
   box-shadow: 0px 0px 0px 1px #007bff;
 }
+
 .language-holder img {
   max-width: 32px;
 }
@@ -140,13 +142,17 @@ input[type=checkbox], input[type=radio] {
   background: #fcf7cd;
 }
 
-.sidebar-categories>div button{
+.sidebar-categories > div button {
   max-width: 120px;
   width: 100%;
   display: block;
   margin: 0 auto;
 }
 
-form>.sidebar-categories{
+form > .sidebar-categories {
   margin-bottom: 30px;
+}
+
+.filter-types button {
+  margin-right: 10px;
 }
